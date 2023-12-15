@@ -1,0 +1,19 @@
+{% include 'sitio/cabecera.html' %}
+
+Profesionales disponibles
+    <!-- Inicio read - ver -->
+    {% for profesional in profesionales %}
+            <li>{{ profesional.nombre_y_apellido }}</li>
+            <li>{{ profesional.profesion }}</li>
+            <li>{{ profesional.descripcion }}</li>
+            <button>
+                <a href="{{url_for('ticket', id=profesional.id_prof)}}">solicitar</a>
+            </button>
+            <button>
+                <a href="{{url_for('ver_perfil', id=profesional.id_prof)}}">ver perfil</a>
+            </button>
+        
+            <!-- Inicio Editar -->
+    {% endfor %} 
+
+{% include 'sitio/pie.html' %}

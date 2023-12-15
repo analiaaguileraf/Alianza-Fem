@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+</head>
+<body style = "font-family: 'Roboto Slab',serif">
+    <div class="bg-white">
+        <!-- Header -->
+        <header class="absolute inset-x-0 h-32 mr-10 flex items-center top-0 z-50 justify-between ">
+          <div class="ml-4 flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+              <img class="h-32 w-auto" src="/static/logo_2.png" alt="">
+            </a>
+          
+          </div>
+        
+          <nav class="flex max-w-7xl items-center justify-right p-6 lg:px-8" aria-label="Global">
+            
+            <ul class="sm:text-2xl hidden lg:flex lg:gap-x-12 text-sm font-semibold leading-6 text-[#845EC2]">
+              <li><a class="nav-item nav-link" href="{{url_for('inicio')}}" >NOSOTRAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('lista_prof')}}" >VOLUNTARIAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('usuarios')}}" >HISTORIAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('ticket')}}" >TICKETS</a></li>
+        
+        </ul>
+            
+          </nav>
+
+          <!-- Mobile menu, show/hide based on menu open state. -->
+          <div class="lg:hidden" role="dialog" aria-modal="true">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-50"></div>
+            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+              <div class="flex items-center justify-between">
+                <a href="#" class="-m-1.5 p-1.5">
+                  <span class="sr-only">Your Company</span>
+                  <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+                </a>
+                <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                  <span class="sr-only">Close menu</span>
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/10">
+                  <div class="space-y-2 py-6">
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Resources</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+                  </div>
+                  <div class="py-6">
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+  
+        <div class="bg-white py-24 md:py-32">
+            <div class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-5">
+              <div class="rounded-3xl xl:col-span-2 bg-red-700 w-96 flex flex-col items-center" style="background-image: url(/static/este_si.jpg)">
+                <h2 class=" mt-10 justify-center font-bold tracking-tight text-[#845EC2] text-2xl">Pedidos de ayuda</h2>
+              
+                <p class="ml-4 text-lg leading-8 text-[bg-#005B44] mx-auto">Todas conocemos la realidad de este pais, nada mejor que el apoyo de mujeres para poder superar adversidades y ayudarnos en esta lucha. Aquí encontrarás testimonios e historias de mujeres a las cuales podes ayudar.</p>
+                
+              </div>
+              <ul role="list" class="-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3">
+                
+                
+                {% for ticket in tickets %}
+                <li class="flex flex-col gap-10 pt-12 sm:flex-row">
+                  <img class="aspect-[4/5] w-32 h-32 flex-none rounded-2xl object-cover" src="/static/avatar_1.jpg" alt="">
+                  <div class="max-w-xl flex-auto">
+                    <h3 class="text-lg font-semibold leading-8 tracking-tight text-[#005B44]">{{ticket}}</h3>
+                    <h4 class="text-m font-semibold leading-8 tracking-tight text-[#005B44]">{{ticket.tipo_trabajo}}</h3>
+                    <p class="text-sm font-semibold leading-8 tracking-tight text-[#005B44]">{{ticket.ciudad}}</p>
+                
+                    <p class="mt-10 text-xl leading-7 text-gray-900">{{ticket.descripcion}}
+                    </p>
+                  
+                    
+                  
+                    <button href class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"><a href="https://iconos8.es/icon/set/whatsapp/plumpy"><img src="/static/icons8-whatsapp-24.png" alt=""></a>
+                          <a href="{{ url_for('ayudar', id=ticket.id_ticket) }}">Quiero ayudar</a>
+                      </button>
+                 
+                
+
+                  </div>
+                </li>
+                {% endfor %}  
+
+                
+                <!-- More people... -->
+              </ul>
+            </div>
+          </div>
+          

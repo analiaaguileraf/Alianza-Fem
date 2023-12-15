@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <title>Match</title>
+</head>
+<body class="bg-[#FCF8FF]" style = "font-family: 'Roboto Slab', serif ">
+    <header class=" mt-4 absolute inset-x-0 h-20 mr-10 flex items-center top-0 z-50 justify-between ">
+        <div class="ml-4 flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="mx-auto h-32  w-auto" src="/static/logo_2.png" alt="">
+          </a>
+        
+        </div>
+      
+        <nav class="flex max-w-7xl items-center justify-right p-6 lg:px-8" aria-label="Global">
+          
+          <ul class="sm:text-2xl hidden lg:flex lg:gap-x-12 text-sm font-semibold leading-6 text-[#845EC2]">
+              <li><a class="nav-item nav-link" href="{{url_for('inicio')}}" >NOSOTRAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('lista_prof')}}" >VOLUNTARIAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('usuarios')}}" >HISTORIAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('ticket')}}" >TICKETS</a></li>
+        
+        </ul>
+          
+        </nav>
+      
+        <!-- Mobile menu, show/hide based on menu open state. -->
+        <div class="lg:hidden" role="dialog" aria-modal="true">
+          <!-- Background backdrop, show/hide based on slide-over state. -->
+          <div class="fixed inset-0 z-50"></div>
+          <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div class="flex items-center justify-between">
+              <a href="#" class="-m-1.5 p-1.5">
+                <span class="sr-only">Your Company</span>
+                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+              </a>
+              <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                <span class="sr-only">Close menu</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="mt-6 flow-root">
+              <div class="-my-6 divide-y divide-gray-500/10">
+                <div class="space-y-2 py-6">
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Resources</a>
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+                </div>
+                <div class="py-6">
+                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    <div>
+
+        <div class="py-24 sm:py-32" style="background-image: url(/static/mujeres5.png);background-repeat: no-repeat;">
+            <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl font-bold tracking-tight text-violet-950 sm:text-4xl italic">Conoce a nuestras voluntarias</h2>
+                    <p class="mt-6 text-lg leading-8 text-black font-bold italic">El voluntariado de mujeres es una forma de participación social en la que las mujeres donan su tiempo, habilidades y energía de manera voluntaria y sin fines de lucro para contribuir al bienestar de la comunidad y la sociedad en general. Aquí tienes un listado de nuestras voluntarias.</p>
+                </div>
+                <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+                    <!-- Aca empieza mi cuadro -->
+
+                    {% for profesion in profesionales %}
+    
+          
+                      <li>
+                      <div class="flex items-center gap-x-6">
+                          <img class="h-16 w-16 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                          <div>
+                          <h3 class="text-xl font-semibold leading-7 tracking-tight text-gray-900">{{profesion.nombre_y_apellido}}</h3>
+                          <p class="text-xl font-semibold leading-6 text-indigo-600 mb-2">{{profesion.profesion}}</p>
+                          <div class="inline-flex gap-x-4">
+                              <a href="{{ url_for('ver_perfil',id=profesion.id_prof) }}"><button class="rounded bg-[#845EC2] px-2 py-1 text-xl font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Ver perfil</button>
+                              </a>
+                           
+                          </div>
+                      </div>
+                      </div>
+                      </li>
+                  {% endfor %}  
+                
+          </ul>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
+</div>

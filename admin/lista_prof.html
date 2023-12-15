@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="font-bold pt-6 pl-6 pb-6">Ver Profesionales</h1>
+
+    <!-- Inicio read - ver -->
+    {% for profesional in profesionales %}
+            <li>{{ profesional.nombre_y_apellido }}</li>
+            <li>{{ profesional.city }}</li>
+            <li>{{ profesional.email }}</li>
+            <li>{{ profesional.numero_phone }}</li>
+            <li>{{ profesional.contrasenha }}</li>
+            <li>{{ profesional.profesion }}</li>
+            <li>{{ profesional.descripcion }}</li>
+            <button>
+                <a href="{{url_for('prof_editar', id=profesional.id_prof)}}">Editar</a>
+            </button>
+        
+            <!-- Inicio Editar -->
+    {% endfor %} 
+</body>
+</html>

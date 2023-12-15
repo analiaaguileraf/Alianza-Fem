@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{url_for('prof_editar', id=profesionales.id_prof)}}" method="POST">
+
+        <div class="pt-2 pl-8">
+            <input name="nombre_y_apellido" type="text" placeholder="Nombre del profesional" value="{{profesionales.nombre_y_apellido}}">
+            <input name='city' type="text" placeholder="Ciudad del usuario" value="{{profesionales.city}}">
+            <input name='email' type="text" placeholder="Ingrese su email" value="{{profesionales.email}}">
+            <input name='numero_phone' type="text" placeholder="Ingrese su email" value="{{profesionales.numero_phone}}">
+            <input name='contrasenha' type="text" placeholder="Ingrese su contraseña" value="{{profesionales.contrasenha}}">
+            <input name='profesion' type="text" placeholder="Ingrese su profesion"value="{{profesionales.profesion}}">
+            <input name='descripcion' type="text" placeholder="Ingrese una breve descripcion sobre su tipo de negocio" value="{{profesionales.descripcion}}">
+            <input name='descripcion_det' type="text" placeholder="Ingrese una descripcion detallada sobre su tipo de negocio">
+
+        
+        </div>
+
+        <button type="submit" class="font-bold text-sky-600 pt-4 pl-8" >
+            Editar
+        </button>
+        <button class="font-bold pt-4 pl-8 text-sky-600">
+            <a href="{{ url_for('inicio') }}">Cancelar</a>
+        </button>
+
+    </form>
+</body>
+</html>

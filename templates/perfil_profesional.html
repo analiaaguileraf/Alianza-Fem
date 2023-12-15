@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil_Prof</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#FCF8FF]" style = "font-family: 'Roboto Slab', serif">
+<header class=" mt-4 absolute inset-x-0 h-20 mr-10 flex items-center top-0 z-50 justify-between ">
+  <div class="ml-4 flex lg:flex-1">
+    <a href="#" class="-m-1.5 p-1.5">
+      <img class="mx-auto h-32  w-auto" src="/static/logo_2.png" alt="Logo">
+    </a>
+  
+  </div>
+
+  <nav class="flex max-w-7xl items-center justify-right p-6 lg:px-8" aria-label="Global">
+    
+    <ul class="sm:text-2xl hidden lg:flex lg:gap-x-12 text-sm font-semibold leading-6 text-[#845EC2]">
+              <li><a class="nav-item nav-link" href="#" >NOSOTRAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('lista_prof')}}" >VOLUNTARIAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('usuarios')}}" >HISTORIAS</a></li>
+              <li><a class="nav-item nav-link" href="{{url_for('ticket')}}" >TICKETS</a></li>
+        
+        </ul>
+    
+  </nav>
+
+  <!-- Mobile menu, show/hide based on menu open state. -->
+  <div class="lg:hidden" role="dialog" aria-modal="true">
+    <!-- Background backdrop, show/hide based on slide-over state. -->
+    <div class="fixed inset-0 z-50"></div>
+    <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+      <div class="flex items-center justify-between">
+     
+        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+          <span class="sr-only">Close menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mt-6 flow-root">
+        <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="space-y-2 py-6">
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Resources</a>
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+          </div>
+          <div class="py-6">
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+  
+  <main >
+    <div class=" ml-64 mt-6 py-24 md:py-32">
+        <div class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-5">
+          <ul role="list" class="-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3">
+            <li class="flex flex-col gap-10 pt-12 sm:flex-row">
+             <img class="aspect-[4/5] w-52 flex-none rounded-2xl object-cover" src="/static/imagen.jpg" alt="">
+              <div class="max-w-xl flex-auto">
+
+                <h3 class="text-2xl font-semibold leading-8 tracking-tight text-[#845EC2]">{{profesionales.nombre_y_apellido}}</h3>
+                <p class="text-base leading-7 text-slate-700">Profesión:{{profesionales.profesion}}</p>
+                <p class="mt-6 text-base leading-7 text-slate-700">Descripción:{{profesionales.descripcion}}</p>
+                <ul role="list" class="mt-6 flex gap-x-6">
+                  <li>
+                    <a href="https://wa.me/{{profesionales.numero_phone}}" class="text-gray-400 hover:text-gray-500">
+                      <span class="sr-only">WhatsApp</span>
+                      <svg  class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                        <path d="M12,2C6.477,2,2,6.477,2,12c0,1.592,0.382,3.091,1.043,4.427l-1.005,4.019c-0.229,0.915,0.6,1.745,1.516,1.516 l4.019-1.005C8.909,21.618,10.408,22,12,22c5.523,0,10-4.477,10-10C22,6.477,17.523,2,12,2z" opacity=".35"></path><path d="M16.393,13.467c-0.809-0.809-2.121-0.809-2.93,0l-0.516,0.516l-2.93-2.93l0.516-0.516c0.809-0.809,0.809-2.121,0-2.93	s-2.121-0.809-2.93,0c-0.517,0.517-0.7,1.239-0.556,1.904c0.123,0.919,0.606,3.029,2.509,4.932c1.903,1.903,4.013,2.386,4.932,2.509	c0.665,0.144,1.387-0.039,1.904-0.556C17.202,15.587,17.202,14.276,16.393,13.467z"></path>
+                        </svg>
+                    </a>
+                  </li>
+                </ul>
+              
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+      </main>
+</body>
+</html>

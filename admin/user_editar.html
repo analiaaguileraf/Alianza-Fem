@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="font-bold pt-4 pl-8 pb-6">Aqui podras editar tu usuario</h1>
+
+    <form action="{{url_for('user_editar', id=usuarios.id_user)}}" method="POST">
+
+        <div class="pt-2 pl-8">
+            <input type="text" name="nombre_y_apellido" placeholder="Nombre del usuario" value="{{usuarios.nombre_y_apellido}}">
+            <input name='city' type="text" placeholder="Ciudad del usuario" value="{{usuarios.city}}">
+            <input name='email' type="text" placeholder="Ingrese su email" value="{{usuarios.email}}">
+            <input name='contrasenha' type="text" placeholder="Ingrese su contraseña" value="{{usuarios.contrasenha}}">
+        </div>
+        
+            <button type="submit" class="font-bold text-sky-600 pt-4 pl-8" >
+                Editar
+            </button>
+        
+            <button class="font-bold pt-4 pl-8 text-sky-600">
+                <a href="{{ url_for('inicio') }}">Cancelar</a>
+            </button>
+
+    </form>
+</body>
+</html>
